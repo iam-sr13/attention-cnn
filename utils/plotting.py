@@ -103,6 +103,10 @@ def plot_attention_positions_all_layers(model, width, tensorboard_writer=None, g
         plot_attention_layer(model, layer_idx, width, ax=ax)
 
         ax.set_title(f"Layer {layer_idx + 1}")
+
+        plt.savefig("quad_opl_{}_{}.png".format(layer_idx+1,global_step)) 
+        #plt.show() 
+
         if tensorboard_writer:
             tensorboard_writer.add_figure(f"attention/layer{layer_idx}", fig, global_step=global_step)
         plt.close(fig)
